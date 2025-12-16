@@ -41,7 +41,7 @@ export default function OrgChartNode({ employee, minimap }: { employee: Employee
       const childX = childRect.left + childRect.width / 2 - wrapRect.left;
       const childY = childRect.top - wrapRect.top;
       
-      const dx = childX - parentX;
+      // const dx = childX - parentX;
       const dy = childY - parentY;
       const cpx1 = parentX;
       const cpy1 = parentY + Math.max(20, dy * 0.35);

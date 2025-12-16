@@ -20,7 +20,7 @@ export default function Minimap({ children, onClickCenter, scale }: {
   };
 
   return (
-    <div className="bg-white border rounded-md p-1 shadow-sm" style={{ width: 200, height: 120 }}>
+    <div className="bg-white border rounded-md p-1 shadow-sm" style={{ width: 200, height: 120 }} key={scale}>
       <div ref={ref} onClick={handleClick} style={{ width: "100%", height: "100%", overflow: "hidden", position: "relative" }}>
         {children}
       </div>

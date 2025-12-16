@@ -1,11 +1,11 @@
 "use client";
 
-import { Box, IconButton, Link, Tooltip } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
 import WalletIcon from "@mui/icons-material/Wallet";
-import DescriptionIcon from "@mui/icons-material/Description";
 import SettingsIcon from "@mui/icons-material/Settings";
+import DescriptionIcon from "@mui/icons-material/Description";
+import { Box, IconButton, Link, Tooltip } from "@mui/material";
 import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
 
 export default function LeftSidebar() {
@@ -62,7 +62,7 @@ export default function LeftSidebar() {
   );
 }
 
-function SidebarIcon({ icon, label, active = false }: any) {
+function SidebarIcon({ icon, label, active = false }: { icon: React.ReactNode; label: string; active?: boolean }) {
   return (
     <Tooltip title={label} placement="right">
       <IconButton

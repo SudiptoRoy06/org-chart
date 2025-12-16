@@ -1,6 +1,11 @@
 "use client";
 
-import React, { useRef, useEffect, useImperativeHandle, forwardRef } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 
 export interface ZoomPanHandle {
   containerEl: HTMLDivElement | null;
@@ -8,11 +13,16 @@ export interface ZoomPanHandle {
   getSnapshot: () => { scrollLeft: number; scrollTop: number; scale: number };
 }
 
-export default forwardRef<ZoomPanHandle, {
+interface ZoomPanContainerProps {
   scale: number;
-  setScale?: (n:number)=>void;
+  setScale?: (n: number) => void;
   children: React.ReactNode;
-}>(({ scale, children }, ref) => {
+}
+
+const ZoomPanContainer = forwardRef<
+  ZoomPanHandle,
+  ZoomPanContainerProps
+>(({ scale, children }, ref) => {
   const outerRef = useRef<HTMLDivElement | null>(null);
   const innerRef = useRef<HTMLDivElement | null>(null);
 
@@ -25,7 +35,7 @@ export default forwardRef<ZoomPanHandle, {
       scale,
     }),
   }));
-  
+
   useEffect(() => {
     if (!innerRef.current) return;
     innerRef.current.style.transform = `scale(${scale})`;
@@ -49,3 +59,7 @@ export default forwardRef<ZoomPanHandle, {
     </div>
   );
 });
+
+ZoomPanContainer.displayName = "ZoomPanContainer";
+
+export default ZoomPanContainer;
