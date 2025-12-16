@@ -4,11 +4,17 @@ import type { OrgChartResponse, EmployeeNode } from "@/lib/types";
 
 export const fetchOrgChart = createAsyncThunk(
   "orgChart/fetch",
-  async (employeeId: number) => {
-    const res = await api.get(`/relationship/people_chart/${employeeId}`);
-    return res.data as OrgChartResponse;
+  async (employeeId: number, { rejectWithValue }) => {
+    try {
+      const res = await api.get(`/relationship/people_chart/${employeeId}`);
+      return res.data;
+    } catch (err: any) {
+      console.error("API ERROR:", err.response?.data || err.message);
+      return rejectWithValue("API failed");
+    }
   }
 );
+
 
 const orgChartSlice = createSlice({
   name: "orgChart",
