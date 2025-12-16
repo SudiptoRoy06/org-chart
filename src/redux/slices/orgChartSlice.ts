@@ -8,8 +8,8 @@ export const fetchOrgChart = createAsyncThunk(
     try {
       const res = await api.get(`/relationship/people_chart/${employeeId}`);
       return res.data;
-    } catch (err: any) {
-      console.error("API ERROR:", err.response?.data || err.message);
+    } catch {
+      console.error("API ERROR:");
       return rejectWithValue("API failed");
     }
   }
